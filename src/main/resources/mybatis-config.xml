@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 配置 -->
+<configuration>
+
+    <!-- 1. properties: 属性配置
+        <property:一个具体的属性配置
+        resource: 引入路径下的属性文件
+        url： 引入网络路径或者是磁盘路径下的属性文件
+    -->
+    <properties resource="db.properties"></properties>
+
+
+    <!-- 2.settings: 包含了很多重要的设置项-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!-- 3.typeAliases: 别名处理
+            <typeAlias>: 给定某个java类型取名
+            type: 指定java的全类名
+            alias: 指定别名，默认的别名就是类名
+     -->
+    <typeAliases>
+        <package name="com.smart.entity"/>
+    </typeAliases>
+
+
+    <!-- 环境
+        environments: MyBatis支持配置多个环境，通过default来指定具体使用的环境
+            environment: 具体的环境
+                <transactionManager>: 事务管理
+                        JDBC ： JdbcTransactionFactory
+                        MANAGED:ManagedTransactionFactory
+                        结论： 事务管理将来是交给Spring来做。
+                        <datasource> 数据源
+                        UNPOOLED： 不使用连接池
+                        POOLED  ： 使用连接池
+                        JNDI    ：web上获取
+                        结论：数据源将来交给Spring做
+
+    -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+        <!--<environment id="test">
+            <transactionManager type=""></transactionManager>
+            <dataSource type=""></dataSource>
+        </environment>-->
+    </environments>
+    <!-- 引入SQL映射文件
+            ＜mapper>:引入一个SQL映射文件
+                resource：引入类路径下的SQL映射文件
+            <package>:批量引入SQL映射文件
+                     要求：SQL映射文件 必须与Mapper接口同名同位置
+    -->
+
+
+    <mappers>
+        <!--mapper resource="UserMapper.xml" /-->
+        <package name="com.smart.dao"/>
+    </mappers>
+
+</configuration>
