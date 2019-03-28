@@ -2,6 +2,8 @@ package com.smart.dao;
 
 import com.smart.entity.User;
 
+import java.util.Map;
+
 public interface UserMapper {
 
     //定义CRUD相关的方法
@@ -19,5 +21,7 @@ public interface UserMapper {
     public Boolean deleteUserById(Integer id);
 
     public User getUserByIdAndUsername(Integer id, String username);
+
+    public User getUserByMap(Map<String,Object> map);
 
 }

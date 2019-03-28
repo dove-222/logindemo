@@ -12,11 +12,12 @@ public class problem {
 
   public static void main (String[] args){
 
-    Scanner in = new Scanner(System.in);
-    System.out.println(FirstNotRepeatingChar("google"));
+
 
   }
   static public int FirstNotRepeatingChar(String str) {
+
+
     if(str=="") return -1;
     else{
       LinkedHashMap<Character, Integer> map = new LinkedHashMap<Character, Integer>();

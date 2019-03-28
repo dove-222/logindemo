@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class testMyBatisTest {
@@ -98,7 +100,12 @@ public class testMyBatisTest {
 
         try {
             UserMapper mapper = session.getMapper(UserMapper.class);
-            User user = mapper.getUserByIdAndUsername(10,"201827");
+            //User user = mapper.getUserByIdAndUsername(10,"201827");
+            Map<String,Object> map = new HashMap<>();
+            map.put("id",10);
+            map.put("username","201827");
+
+            User user = mapper.getUserByMap(map);
             session.commit();
             System.out.println(user);
         }finally {

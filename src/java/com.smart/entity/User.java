@@ -1,7 +1,7 @@
 package com.smart.entity;
 
 
-
+import java.util.Objects;
 
 public class User {
     private Integer id;
@@ -50,6 +50,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return userAge == user.userAge &&
+                id.equals(user.id) &&
+                username.equals(user.username) &&
+                password.equals(user.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, userAge);
     }
 
     @Override

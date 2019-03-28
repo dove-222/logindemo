@@ -54,4 +54,10 @@
     select id,username,password,user_age from user where id = #{1}
     </select>
 
+    <!-- public User getUserByMap(Map<String,Object> map); -->
+    <select id="getUserByMap" resultType="User">
+        select id,username,password,user_age from user where id = #{id} and username = #{username}
+
+    </select>
+
 </mapper>

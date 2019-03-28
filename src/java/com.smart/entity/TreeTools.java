@@ -22,6 +22,7 @@ public class TreeTools {
         int leftDepth = getTreeDept(root.leftChild) +1;
         int rightDepth = getTreeDept(root.rightChild)+1;
         return Math.max(leftDepth,rightDepth);
+
     }
     /**
      * visitNode:访问node节点
